@@ -108,7 +108,7 @@
                     <!-- 遍历 -->
                     <option value="">一级分类</option>
                     <volist name="cate_list" id="v">
-                        <option value="{$v.id}" <if condition="$v.id eq $pro_allinfo['tid']">selected="selected"</if>>-- {$v.name}</option>
+                        <option value="{$v.id}" <if condition="$v.id eq $ggfid">selected="selected"</if>>-- {$v.name}</option>
                     </volist>
                     <!-- 遍历 -->
                 </select>
@@ -118,7 +118,7 @@
                 <select class="inp_1" name="cid" id="ctid" style="width:150px;" onchange="getthcid();">
                     <option value="">二级分类</option>
                     <volist name="catetwo" id="v">
-                        <option value="{$v.id}" <if condition="$v.id eq $pro_allinfo['cid']">selected="selected"</if>>-- {$v.name}</option>
+                        <option value="{$v.id}" <if condition="$v.id eq $gfid">selected="selected"</if>>-- {$v.name}</option>
                     </volist>
                 </select>
 
@@ -134,7 +134,7 @@
                 <select class="inp_1" name="cid" id="cthid" style="width:150px;" onchange="getfcid();">
                     <option value="">三级分类</option>
                     <volist name="catethree" id="v">
-                        <option value="{$v.id}" <if condition="$v.id eq $pro_allinfo['cid']">selected="selected"</if>>-- {$v.name}</option>
+                        <option value="{$v.id}" <if condition="$v.id eq $tid">selected="selected"</if>>-- {$v.name}</option>
                     </volist>
                 </select>
 

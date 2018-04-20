@@ -225,8 +225,34 @@ class ProductController extends PublicController{
 		$tid = M('category')->where('id='.intval($pro_allinfo['cid']))->getField('tid');
 		$pro_allinfo['tid'] = intval($tid);
 		if ($tid) {
-			$catetwo = M('category')->where('tid='.intval($tid))->field('id,name')->select();
-			$this->assign('catetwo',$catetwo);
+
+			$this->assign('tid',$tid);//父亲
+			
+			
+			$catefour = M('category')->where('tid='.intval($tid))->field('tid,id,name')->select();
+			$this->assign('catefour',$catefour);//同级
+
+
+			$catefather = M('category')->where('id='.intval($tid))->field('tid,id,name')->find();
+			$this->assign('catefather',$catefather);//父亲
+			$gfid = $catefather['tid'];//爷爷id
+			$this->assign('gfid',$gfid);//爷爷id
+			$catethree = M('category')->where('tid='.intval($gfid))->field('tid,id,name')->select();
+			$this->assign('catethree',$catethree);//第三级,父亲和叔伯兄弟
+
+
+			$categrandfather = M('category')->where('id='.intval($gfid))->field('tid,id,name')->find();
+			$this->assign('categrandfather',$categrandfather);//爷爷
+			$ggfid = $categrandfather['tid'];//祖父id，第一级的分类
+			$this->assign('ggfid',$ggfid);//祖父id
+			$catetwo = M('category')->where('tid='.intval($ggfid))->field('tid,id,name')->select();
+			$this->assign('catetwo',$catetwo);//第二级,爷爷和叔伯公
+
+
+
+
+
+			 
 		}
 
 		//获取所有商品轮播图
